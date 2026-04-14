@@ -36,12 +36,13 @@ def create_embedding_list(dimension, num_tokens):
     
   return embedding_list
 
-# create the embeddings list with 10 tokens each with a length of 4
-embeddings = create_embedding_list(10000,50000)
+# create the embeddings list with 10 tokens, each with a dimension of 4
+embeddings = create_embedding_list(4,10)
 
 # print out all of the embeddings 
-# for j in range(len(embeddings)):
-#   print(f"{j}: {embeddings[j]}")
+for j in range(len(embeddings)):
+  print(f"{j}: {embeddings[j]}")
+
 
 
 
