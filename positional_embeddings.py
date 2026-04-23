@@ -8,19 +8,20 @@ in a sequence. In the embeddings variable near the bottom, input the dimension f
 of tokens in the sequence. 
 """
 
+
 def create_embedding(position, dimension):
-  """
-  Creates a positional embedding for a token within a sequence. Within the sine and cosine calls below the position 
-  is divided by 10000^(2 * (vector position within sequence) / (dimension of all tokens)). As this increases it will 
-  go from 1 to 100 to 1,000 to 10,000 ....
-  position: position within the sequence
-  dimension: 
-  """
-  vector = np.array([])
-  for i in range(int(dimension/2)):
-    vector = np.append(vector, math.sin(position / 10000**(2*i/dimension)))
-    vector = np.append(vector, math.cos(position / 10000**(2*i/dimension)))
-  return vector 
+	"""
+	Creates a positional embedding for a token within a sequence. Within the sine and cosine calls below the position 
+	is divided by 10000^(2 * (vector position within sequence) / (dimension of all tokens)). As this increases it will 
+	go from 1 to 100 to 1,000 to 10,000 ....
+	position: position within the sequence
+	dimension: 
+	"""
+	vector = np.array([])
+	for i in range(int(dimension/2)):
+    	vector = np.append(vector, math.sin(position / 10000**(2*i/dimension)))
+    	vector = np.append(vector, math.cos(position / 10000**(2*i/dimension)))
+	return vector 
   
 def create_embedding_list(dimension, num_tokens):
   """
@@ -31,8 +32,8 @@ def create_embedding_list(dimension, num_tokens):
   embedding_list = np.array([create_embedding(0,dimension)])
   
   for i in range(1,num_tokens):
-    vector = create_embedding(i,dimension)
-    embedding_list = np.vstack((embedding_list,vector))
+      vector = create_embedding(i,dimension)
+      embedding_list = np.vstack((embedding_list,vector))
     
   return embedding_list
 
